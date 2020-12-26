@@ -16,6 +16,8 @@ const JWT_ACCESS_TOKEN = "JWT_ACCESS_TOKEN";
   providedIn: "root",
 })
 export class AuthService {
+apiBase = environment.apiBase;
+
   url = environment.auth0.url;
   audience = environment.auth0.audience;
   clientId = environment.auth0.clientId;
@@ -114,7 +116,7 @@ export class AuthService {
   }
 
   getUserInfo(accessToken: string) {
-    const url = `http://localhost:5000/userinfo?access_token=${accessToken}`;
+    const url = `${this.apiBase}userinfo?access_token=${accessToken}`;
     this.http.get(url).subscribe((res: any) => {
       console.log(res);
       localStorage.setItem('ID_TOKEN', JSON.stringify(res.data));
