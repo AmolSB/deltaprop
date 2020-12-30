@@ -12,7 +12,7 @@ const routes: Routes = [
     path: "home",
     component: HomeComponent,
   },
-  { path: "", redirectTo: "home", pathMatch: "prefix" },
+  { path: "", component: HomeComponent },
 ];
 
 @NgModule({

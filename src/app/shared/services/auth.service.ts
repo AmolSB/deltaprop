@@ -27,8 +27,8 @@ apiBase = environment.apiBase;
   jwt_access_token: string;
   decodedJWTAccessToken: any;
   code: string;
-  isLoggedIn;
-  isLoggedOut;
+  isLoggedIn = false;
+  isLoggedOut = true;
 
   constructor(
     public route: ActivatedRoute,
@@ -116,7 +116,7 @@ apiBase = environment.apiBase;
   }
 
   getUserInfo(accessToken: string) {
-    const url = `${this.apiBase}userinfo?access_token=${accessToken}`;
+    const url = `${this.apiBase}/userinfo?access_token=${accessToken}`;
     this.http.get(url).subscribe((res: any) => {
       console.log(res);
       localStorage.setItem('ID_TOKEN', JSON.stringify(res.data));
