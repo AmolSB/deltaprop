@@ -104,7 +104,7 @@
           </div>
         </div>
 
-        <div *ngIf="!showPublicCollections || authService.can('create:public-collections')">
+        <div *ngIf="collections.length && (!showPublicCollections || authService.can('create:public-collections'))">
           <div class="links__add">
             <mat-card (click)="drawer.toggle()">
               <mat-icon>add</mat-icon>
